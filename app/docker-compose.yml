@@ -1,5 +1,6 @@
 version: '3.8'
 
+# define different containers and a volume
 services:
   web:
     build: ./
