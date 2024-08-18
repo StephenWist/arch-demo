@@ -1,0 +1,103 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 425B done
+#1 DONE 0.0s
+
+#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 0.4s
+
+#3 docker-image://docker.io/docker/dockerfile:1@sha256:fe40cf4e92cd0c467be2cfc30657a680ae2398318afd50b0c80585784c604f28
+#3 CACHED
+
+#4 [internal] load metadata for docker.io/library/python:3-alpine
+#4 DONE 0.2s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [1/8] FROM docker.io/library/python:3-alpine@sha256:c2f41e6a5a67bc39b95be3988dd19fbd05d1b82375c46d9826c592cca014d4de
+#6 DONE 0.0s
+
+#7 [2/8] WORKDIR /code
+#7 CACHED
+
+#8 [internal] load build context
+#8 transferring context: 10.90kB 0.0s done
+#8 DONE 0.0s
+
+#9 [3/8] RUN apk add --no-cache gcc
+#9 0.311 fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/main/x86_64/APKINDEX.tar.gz
+#9 0.938 fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/community/x86_64/APKINDEX.tar.gz
+#9 2.439 (1/12) Installing libgcc (13.2.1_git20240309-r0)
+#9 2.492 (2/12) Installing jansson (2.14-r4)
+#9 2.521 (3/12) Installing libstdc++ (13.2.1_git20240309-r0)
+#9 3.119 (4/12) Installing zstd-libs (1.5.6-r0)
+#9 3.324 (5/12) Installing binutils (2.42-r0)
+#9 5.010 (6/12) Installing libgomp (13.2.1_git20240309-r0)
+#9 5.096 (7/12) Installing libatomic (13.2.1_git20240309-r0)
+#9 5.116 (8/12) Installing gmp (6.3.0-r1)
+#9 5.243 (9/12) Installing isl26 (0.26-r1)
+#9 5.710 (10/12) Installing mpfr4 (4.2.1-r0)
+#9 5.880 (11/12) Installing mpc1 (1.3.1-r1)
+#9 5.912 (12/12) Installing gcc (13.2.1_git20240309-r0)
+#9 33.93 Executing busybox-1.36.1-r29.trigger
+#9 33.94 OK: 155 MiB in 49 packages
+#9 DONE 34.1s
+
+#10 [4/8] RUN apk add --no-cache musl-dev
+#10 0.336 fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/main/x86_64/APKINDEX.tar.gz
+#10 0.668 fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/community/x86_64/APKINDEX.tar.gz
+#10 1.880 (1/1) Installing musl-dev (1.2.5-r0)
+#10 3.702 OK: 165 MiB in 50 packages
+#10 DONE 3.8s
+
+#11 [5/8] RUN apk add --no-cache linux-headers
+#11 0.411 fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/main/x86_64/APKINDEX.tar.gz
+#11 0.778 fetch https://dl-cdn.alpinelinux.org/alpine/v3.20/community/x86_64/APKINDEX.tar.gz
+#11 1.993 (1/1) Installing linux-headers (6.6-r0)
+#11 2.837 OK: 173 MiB in 51 packages
+#11 DONE 3.0s
+
+#12 [6/8] COPY requirements.txt requirements.txt
+#12 DONE 0.0s
+
+#13 [7/8] RUN pip install -r requirements.txt
+#13 2.262 Collecting flask (from -r requirements.txt (line 1))
+#13 2.362   Downloading flask-3.0.3-py3-none-any.whl.metadata (3.2 kB)
+#13 2.450 Collecting redis (from -r requirements.txt (line 2))
+#13 2.472   Downloading redis-5.0.8-py3-none-any.whl.metadata (9.2 kB)
+#13 2.540 Collecting Werkzeug>=3.0.0 (from flask->-r requirements.txt (line 1))
+#13 2.556   Downloading werkzeug-3.0.3-py3-none-any.whl.metadata (3.7 kB)
+#13 2.614 Collecting Jinja2>=3.1.2 (from flask->-r requirements.txt (line 1))
+#13 2.629   Downloading jinja2-3.1.4-py3-none-any.whl.metadata (2.6 kB)
+#13 2.671 Collecting itsdangerous>=2.1.2 (from flask->-r requirements.txt (line 1))
+#13 2.688   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+#13 2.741 Collecting click>=8.1.3 (from flask->-r requirements.txt (line 1))
+#13 2.756   Downloading click-8.1.7-py3-none-any.whl.metadata (3.0 kB)
+#13 2.799 Collecting blinker>=1.6.2 (from flask->-r requirements.txt (line 1))
+#13 2.814   Downloading blinker-1.8.2-py3-none-any.whl.metadata (1.6 kB)
+#13 2.923 Collecting MarkupSafe>=2.0 (from Jinja2>=3.1.2->flask->-r requirements.txt (line 1))
+#13 2.942   Downloading MarkupSafe-2.1.5-cp312-cp312-musllinux_1_1_x86_64.whl.metadata (3.0 kB)
+#13 2.971 Downloading flask-3.0.3-py3-none-any.whl (101 kB)
+#13 3.050 Downloading redis-5.0.8-py3-none-any.whl (255 kB)
+#13 3.229 Downloading blinker-1.8.2-py3-none-any.whl (9.5 kB)
+#13 3.257 Downloading click-8.1.7-py3-none-any.whl (97 kB)
+#13 3.327 Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+#13 3.357 Downloading jinja2-3.1.4-py3-none-any.whl (133 kB)
+#13 3.449 Downloading werkzeug-3.0.3-py3-none-any.whl (227 kB)
+#13 3.584 Downloading MarkupSafe-2.1.5-cp312-cp312-musllinux_1_1_x86_64.whl (33 kB)
+#13 3.639 Installing collected packages: redis, MarkupSafe, itsdangerous, click, blinker, Werkzeug, Jinja2, flask
+#13 4.443 Successfully installed Jinja2-3.1.4 MarkupSafe-2.1.5 Werkzeug-3.0.3 blinker-1.8.2 click-8.1.7 flask-3.0.3 itsdangerous-2.2.0 redis-5.0.8
+#13 4.443 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#13 DONE 4.9s
+
+#14 [8/8] COPY . .
+#14 DONE 0.4s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 0.5s done
+#15 writing image sha256:87c73d211fed7ea7e2acd57e78496d8018ab6485f387ed356719cac43d78acc9 done
+#15 DONE 0.5s
