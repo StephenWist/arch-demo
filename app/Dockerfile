@@ -8,6 +8,13 @@ WORKDIR /usr/src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+# copy entrypoint.sh
+# create directory for the app user
+RUN mkdir -p /home/app
+
+# create the app user
+RUN addgroup --system app && adduser --system --group app
+
 # install system dependencies
 RUN apt-get update && apt-get install -y netcat
 
@@ -15,13 +22,6 @@ RUN apt-get update && apt-get install -y netcat
 RUN pip install --upgrade pip
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt
-
-# copy entrypoint.sh
-# create directory for the app user
-RUN mkdir -p /home/app
-
-# create the app user
-RUN addgroup --system app && adduser --system --group app
 
 # create the appropriate directories
 ENV HOME=/home/app
@@ -35,7 +35,19 @@ RUN sed -i 's/\r$//g' /usr/src/app/entrypoint.sh
 RUN chmod +x /usr/src/app/entrypoint.sh
 
 # copy project
-COPY . .
+COPY . $APP_HOME
 
-# run entrypoint.sh
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+# chown all the files to the app user
+RUN chown -R app:app $APP_HOME
+
+# change to the app user
+USER app
+
+# run entrypoint.prod.sh
+ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
+
+# # copy project
+# COPY . .
+
+# # run entrypoint.sh
+# ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
