@@ -12,4 +12,6 @@ def image_upload(request):
         return render(request, "upload.html", {
             "image_url": image_url
         })
-    return render(request, "upload.html")
+    return render(request, "upload.html", {
+        "img_url": "/home/app/web/mediafiles/arch.png"
+    })

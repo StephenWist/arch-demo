@@ -51,7 +51,7 @@ USER app
 # ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
 
 # # copy project
-COPY . .
+# COPY . .
 
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
