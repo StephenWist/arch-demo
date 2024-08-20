@@ -16,7 +16,7 @@ RUN mkdir -p /home/app
 RUN addgroup --system app && adduser --system --group app
 
 # install system dependencies
-RUN apt-get update && apt-get install -y netcat
+RUN apt-get update && apt-get install -y netcat curl
 
 # install dependencies
 RUN pip install --upgrade pip
@@ -31,6 +31,9 @@ RUN mkdir $APP_HOME/staticfiles
 RUN mkdir $APP_HOME/mediafiles
 WORKDIR $APP_HOME
 
+# install eutils
+RUN sh -c "$(curl -fsSL https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh)"
+ENV PATH="$PATH:$HOME/edirect"
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 RUN sed -i 's/\r$//g' /usr/src/app/entrypoint.sh
 RUN chmod +x /usr/src/app/entrypoint.sh
@@ -45,10 +48,10 @@ RUN chown -R app:app $APP_HOME
 USER app
 
 # run entrypoint.prod.sh
-ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
+# ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
 
 # # copy project
-# COPY . .
+COPY . .
 
-# # run entrypoint.sh
-# ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+# run entrypoint.sh
+ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
