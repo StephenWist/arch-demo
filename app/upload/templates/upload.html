@@ -4,15 +4,9 @@
     {% csrf_token %}
     <button type="submit" name="run_eutils">Get CEL data</button>
   </form>
-  <!-- <form action="{% url "upload" %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="image_file">
-    <input type="submit" value="submit" />
-  </form> -->
 
-  {% if image_url %}
-    <!-- <p>File uploaded at: <a href="{{ image_url }}">{{ image_url }}</a></p> -->
-  {% endif %}
-<!-- 
+  <h1>Dummy name: SoftFile.name</h1>
+  <header>Dummy sample IDs: SoftFile.subset_sample_id</header>
+
 <img src="/static/arch.png" style="width:500px"/> -->
 {% endblock %}

@@ -2,6 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
 
+from models import *
+
+
+# def sf_detail(request, pk):
+#     file_name = SoftFile.objects.get(pk=pk)
+#     context = { 'file': file_name }
+#     return return(request, 'upload.html', context)
 
 def image_upload(request):
     if request.method == "POST" and request.FILES["image_file"]:

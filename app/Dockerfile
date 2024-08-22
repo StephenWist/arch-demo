@@ -38,16 +38,17 @@ RUN chmod +x /usr/src/app/entrypoint.sh
 # install eutils
 RUN sh -c "$(curl -fsSL https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh)"
 ENV PATH="$PATH:$HOME/edirect"
-RUN ftp 'ftp://ftp.ncbi.nlm.nih.gov/geo/README.txt' -a -i -o 'ncbi_eutils_ftp_readme.txt'
-RUN curl 'ftp://ftp.ncbi.nlm.nih.gov/geo/datasets/GDSnnn/GDS999/soft/GDS999.soft.gz' -o 'GDS999.soft.gz'
-RUN gunzip 'GDS999.soft.gz'
+# RUN ftp 'ftp://ftp.ncbi.nlm.nih.gov/geo/README.txt' -a -i -o 'ncbi_eutils_ftp_readme.txt'
+# RUN curl 'ftp://ftp.ncbi.nlm.nih.gov/geo/datasets/GDSnnn/GDS999/soft/GDS999.soft.gz' -o 'GDS999.soft.gz'
+# RUN gunzip 'GDS999.soft.gz'
 
 # copy project
 COPY . $APP_HOME
-RUN mv 'GDS999.soft' '/home/app/web/upload/'
 
 # chown all the files to the app user
 RUN chown -R app:app $APP_HOME
+# brute force download GDS999.soft.gz
+RUN $APP_HOME/staticfiles/get_soft_file.py
 # change to the app user
 USER app
 
