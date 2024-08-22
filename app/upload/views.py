@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
 
 
@@ -13,6 +14,7 @@ def image_upload(request):
             "image_url": image_url
         })
     if request.method == "POST" and 'run_eutils' in request.POST:
+        pass
         # import script
         # from .. import eutils.sh
 
@@ -21,7 +23,7 @@ def image_upload(request):
 
         # reload page
         # return HttpResponseRedirect(reverse(app_name:view_name))
-        
+
     return render(request, "upload.html", {
         "img_url": "/home/app/web/mediafiles/arch.png"
     })
