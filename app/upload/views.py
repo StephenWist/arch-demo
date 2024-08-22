@@ -12,6 +12,16 @@ def image_upload(request):
         return render(request, "upload.html", {
             "image_url": image_url
         })
+    if request.method == "POST" and 'run_eutils' in request.POST:
+        # import script
+        # from .. import eutils.sh
+
+        # do the thing
+        # eutils_runner(input)
+
+        # reload page
+        # return HttpResponseRedirect(reverse(app_name:view_name))
+        
     return render(request, "upload.html", {
         "img_url": "/home/app/web/mediafiles/arch.png"
     })

@@ -6,10 +6,14 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile
+      # gunicorn is a more reasonable solution for a web server
+      # for production than Django's built-in dev server
     command: gunicorn arch_demo.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/home/app/web/staticfiles
       - media_volume:/home/app/web/mediafiles
+    # We use 'expose' over 'port' because it is only for communication
+    # internally between the docker containers
     expose:
       - 8000
     env_file:
@@ -27,6 +31,9 @@ services:
     volumes:
       - static_volume:/home/app/web/staticfiles
       - media_volume:/home/app/web/mediafiles
+    # 'port' is used to extend nginx to our host machine, as it
+    # is the router for traffic between user interaction
+    # and the rest of the app.
     ports:
       - 1336:80
     depends_on:
