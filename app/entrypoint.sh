@@ -1,5 +1,5 @@
 #!/bin/sh
-# verifies Postgres is healthy beofre running migrations and Django
+# verifies Postgres is healthy before running migrations and Django
 if [ "$DATABASE" = "postgres" ]
 then
     echo "Waiting for postgres..."

@@ -16,7 +16,7 @@ RUN mkdir -p /home/app
 RUN addgroup --system app && adduser --system --group app
 
 # install system dependencies
-RUN apt-get update && apt-get install -y netcat curl
+RUN apt-get update && apt-get install -y netcat curl ftp
 
 # install dependencies
 RUN pip install --upgrade pip
@@ -34,6 +34,8 @@ WORKDIR $APP_HOME
 # install eutils
 RUN sh -c "$(curl -fsSL https://ftp.ncbi.nlm.nih.gov/entrez/entrezdirect/install-edirect.sh)"
 ENV PATH="$PATH:$HOME/edirect"
+RUN ftp 'ftp://ftp.ncbi.nlm.nih.gov/geo/README.txt' -a -i -o 'ncbi_eutils_ftp_readme.txt'
+
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
 RUN sed -i 's/\r$//g' /usr/src/app/entrypoint.sh
 RUN chmod +x /usr/src/app/entrypoint.sh
@@ -51,7 +53,7 @@ USER app
 # ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
 
 # # copy project
-# COPY . .
+COPY . .
 
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
