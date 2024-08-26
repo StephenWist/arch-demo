@@ -1,0 +1,15 @@
+- model: models.DatasetSeries
+  pk: 1
+  fields:
+    dataset_id: 0
+    num_subsets: 2
+- model: models.Subset
+  pk: 1
+  fields:
+    name: barry
+    # parent_dataset: 0
+- model: models.Subset
+  pk: 2
+  fields:
+    name: larry
+    # parent_dataset: 0

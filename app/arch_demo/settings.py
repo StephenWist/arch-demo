@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'upload',
-    'management.commands',
+    # 'management.commands',
     'models',
 ]
 

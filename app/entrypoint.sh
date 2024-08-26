@@ -14,6 +14,8 @@ fi
 
 python manage.py flush --no-input
 python manage.py migrate
-# python manage.py seed
+python manage.py makemigrations models
+python manage.py migrate models
+python manage.py loaddata /home/app/web/fixtures/data.yaml
 
 exec "$@"
