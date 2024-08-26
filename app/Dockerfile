@@ -27,6 +27,9 @@ RUN pip install -r requirements.txt
 ENV HOME=/home/app
 ENV APP_HOME=/home/app/web
 RUN mkdir $APP_HOME
+# copy over migrations
+RUN mkdir -p $APP_HOME/models/migrations
+RUN chmod +x $APP_HOME/models/migrations
 RUN mkdir $APP_HOME/staticfiles
 RUN mkdir $APP_HOME/mediafiles
 WORKDIR $APP_HOME
@@ -56,7 +59,7 @@ USER app
 # ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
 
 # # copy project
-COPY . .
+# COPY . .
 
 # run entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]

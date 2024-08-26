@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'upload',
+    'management.commands',
+    'models',
 ]
 
 MIDDLEWARE = [

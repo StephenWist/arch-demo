@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Subset(models.Model):
-    parent_dataset = models.ForeignKey("upload.DatasetSeries", \
+    parent_dataset = models.ForeignKey("DatasetSeries", \
                                        related_name='subset', \
                                         on_delete=models.CASCADE)
     name = models.TextField()
