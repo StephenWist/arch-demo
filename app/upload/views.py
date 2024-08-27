@@ -13,10 +13,6 @@ def image_upload(request):
     if request.method == "GET":
         dataset = DatasetSeries.objects.all()
 
-        
-        # return render(request, "upload.html", {
-        #     "img_url": "/home/app/web/mediafiles/arch.png"
-        # })
         return render(request, 'upload.html', context={'datasets': dataset})
     # if request.method == "POST" and 'run_eutils' in request.POST:
     #     pass
@@ -28,7 +24,3 @@ def image_upload(request):
 
         # reload page
         # return HttpResponseRedirect(reverse(app_name:view_name))
-
-    return render(request, "upload.html", {
-        "img_url": "/home/app/web/mediafiles/arch.png"
-    })
