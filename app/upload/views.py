@@ -9,4 +9,4 @@ def image_upload(request):
 
         return render(request, 'upload.html', context={'datasets': dataset})
     if request.method == "POST":
-        
+        pass
