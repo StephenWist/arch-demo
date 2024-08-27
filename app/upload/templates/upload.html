@@ -7,6 +7,20 @@
 
   <h1>Dummy name: SoftFile.name</h1>
   <header>Dummy sample IDs: SoftFile.subset_sample_id</header>
+  <table>
+    {% for dataset in datasets %}
+      <thead>
+        <tr>
+          <td>dataset id</td>
+          <td>num subsets</td>
+        </tr>
+      </thead>
+      <tr>
+        <td>{{ dataset.dataset_id }}</td>
+        <td>{{ dataset.num_subsets }}</td>
+      </tr>
+    {% endfor %}
+  </table>
 
-<img src="/static/arch.png" style="width:500px"/> -->
+  <img src="/static/arch.png" style="width:500px"/>
 {% endblock %}

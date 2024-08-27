@@ -2,8 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.files.storage import FileSystemStorage
 
-from models import *
-
+from models.models import DatasetSeries
 
 # def sf_detail(request, pk):
 #     file_name = SoftFile.objects.get(pk=pk)
@@ -11,17 +10,16 @@ from models import *
 #     return return(request, 'upload.html', context)
 
 def image_upload(request):
-    if request.method == "POST" and request.FILES["image_file"]:
-        image_file = request.FILES["image_file"]
-        fs = FileSystemStorage()
-        filename = fs.save(image_file.name, image_file)
-        image_url = fs.url(filename)
-        print(image_url)
-        return render(request, "upload.html", {
-            "image_url": image_url
-        })
-    if request.method == "POST" and 'run_eutils' in request.POST:
-        pass
+    if request.method == "GET":
+        dataset = DatasetSeries.objects.all()
+
+        
+        # return render(request, "upload.html", {
+        #     "img_url": "/home/app/web/mediafiles/arch.png"
+        # })
+        return render(request, 'upload.html', context={'datasets': dataset})
+    # if request.method == "POST" and 'run_eutils' in request.POST:
+    #     pass
         # import script
         # from .. import eutils.sh
 

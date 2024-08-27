@@ -7,9 +7,15 @@ class Subset(models.Model):
     #                                     on_delete=models.CASCADE)
     name = models.TextField()
 
+    class Meta:
+        db_table = 'model_subset'
+
 class DatasetSeries(models.Model):
     dataset_id = models.TextField()
     num_subsets = models.IntegerField()
+
+    class Meta:
+        db_table = 'model_datasetseries'
 
     def subset_create(self, *args, **kwargs):
         # for i in range(self.num_subsets + 1):
