@@ -9,13 +9,3 @@ def image_upload(request):
         dataset = DatasetSeries.objects.all()
 
         return render(request, 'upload.html', context={'datasets': dataset})
-    # if request.method == "POST" and 'run_eutils' in request.POST:
-    #     pass
-        # import script
-        # from .. import eutils.sh
-
-        # do the thing
-        # eutils_runner(input)
-
-        # reload page
-        # return HttpResponseRedirect(reverse(app_name:view_name))
