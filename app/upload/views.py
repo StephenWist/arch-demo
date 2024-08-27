@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.core.files.storage import FileSystemStorage
 
 from models.models import DatasetSeries
 
