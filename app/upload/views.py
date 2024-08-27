@@ -8,3 +8,5 @@ def image_upload(request):
         dataset = DatasetSeries.objects.all()
 
         return render(request, 'upload.html', context={'datasets': dataset})
+    if request.method == "POST":
+        
