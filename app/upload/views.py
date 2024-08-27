@@ -9,4 +9,6 @@ def image_upload(request):
 
         return render(request, 'upload.html', context={'datasets': dataset})
     if request.method == "POST":
-        pass
+        import subprocess
+        subprocess.call(['sh', 'staticfiles/ftp_geo.sh'])
+        return render(request, 'upload.html')
