@@ -1,6 +1,7 @@
 {% block content %}
 
   <form method="post">
+    <!-- include csrf token on post to ensure request is being run by the user's session -->
     {% csrf_token %}
     <button type="submit" name="run_eutils">Get CEL data</button>
   </form>
