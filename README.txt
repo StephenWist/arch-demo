@@ -1,1 +1,3 @@
-Minimal example of a containerized app nginx running Postgres and a reverse proxy to gunicorn hosting Django. ʕ•ᴥ•ʔ
+Minimal example of a containerized app.
+
+Nginx reverse proxy to Django running Gunicorn with Postgres for DB. ʕ•ᴥ•ʔ
